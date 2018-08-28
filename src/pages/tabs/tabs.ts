@@ -12,8 +12,7 @@ import { IntroPage } from '../intro/intro';
 export class TabsPage {
 
   tab1Root = HomePage;    
-  tab4Root = FeedPage;
-  tab5Root = IntroPage;
+  tab4Root = FeedPage;  
 
   constructor() {
 
