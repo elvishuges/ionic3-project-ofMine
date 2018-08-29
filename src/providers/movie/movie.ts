@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/map';
 
 /*
   Generated class for the MovieProvider provider.
@@ -12,15 +13,15 @@ export class MovieProvider {
 
   private urlBase = "https://api.themoviedb.org/3";	
 
-  constructor(public http: HttpClient) {
+  constructor(public http: Http) {
     console.log('Hello MovieProvider Provider');
   }
   
-
+  //https://api.themoviedb.org/3/movie/latest?api_key=554299a02bf72c71ebac8d2b6bd2db3d
   getLatesMovies(){
     return this.http.get(this.urlBase+"/movie/latest?api_key=554299a02bf72c71ebac8d2b6bd2db3d");
   }
-
+  //https://api.themoviedb.org/3//movie/popular?api_key=554299a02bf72c71ebac8d2b6bd2db3d
   getPopularMovies(){
     return this.http.get(this.urlBase+"/movie/popular?api_key=554299a02bf72c71ebac8d2b6bd2db3d");
   }
