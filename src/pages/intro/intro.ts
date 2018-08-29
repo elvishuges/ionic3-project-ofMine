@@ -27,7 +27,7 @@ export class IntroPage {
   }
 
   goToTabsPage(){
-     this.navCtrl.push(TabsPage); // 
+     this.navCtrl.push(TabsPage); 
   }
 
 }
