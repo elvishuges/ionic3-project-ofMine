@@ -1,5 +1,5 @@
 "# ionic3-project-ofMine" 
-Este projeto foi desenvolvido com um curso da Udemy. 
+Este projeto foi desenvolvido apartir de um curso da Udemy. 
 
 [![Build Status][circle-badge]][circle-badge-url]
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&identifier=109052620)](https://dependabot.com)
