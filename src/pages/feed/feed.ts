@@ -14,7 +14,11 @@ import { MovieProvider } from '../../providers/movie/movie';
    selector: 'page-feed',
    templateUrl: 'feed.html',
    providers:[
-   MovieProvider
+   /* MoveiProvideer precisa, apenas, ser carreagado nessse provider de feed
+   não em app.module.ts, pois em app será carregado em todos arquivos. E será apenas feedts
+   que que usará MovieProvider.
+   */  
+   MovieProvider 
    ]
  })
  export class FeedPage {
