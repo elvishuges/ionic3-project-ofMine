@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { FeedPageModule } from '../pages/feed/feed.module';
 import { IntroPageModule } from '../pages/intro/intro.module';
+import { ConfiguracoesPageModule } from "../pages/configuracoes/configuracoes.module";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,6 +17,8 @@ import { MovieProvider } from '../providers/movie/movie';
 
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { SobrePageModule } from '../pages/sobre/sobre.module';
+import { PerfilPageModule } from '../pages/perfil/perfil.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { HttpClientModule } from '@angular/common/http';
     FeedPageModule,
     IntroPageModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    PerfilPageModule,
+    ConfiguracoesPageModule,
+    SobrePageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

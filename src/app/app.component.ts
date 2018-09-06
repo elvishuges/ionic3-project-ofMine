@@ -32,7 +32,7 @@ export class MyApp {
         this.rootPage = IntroPage;
         configProvider.setComfigData(false);
       }else{ 
-        this.rootPage = TabsPage;
+        this.rootPage = IntroPage;
       }    
       console.log(config);
       statusBar.styleDefault();

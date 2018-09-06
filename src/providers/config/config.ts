@@ -21,7 +21,7 @@ export class ConfigProvider {
   }
 
   constructor() {
-
+    
   }
   
   //recupera os dados do local storage
