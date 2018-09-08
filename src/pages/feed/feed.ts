@@ -35,7 +35,9 @@ import { LoadingController } from 'ionic-angular';
 
    public listaFilmes = new Array<any>();
    public loader;
-   public nome_usuario:string = "Charles franca";
+   public refresher;
+   public isRefreshing:boolean = false; // diz se 
+   
 
    constructor(
      public navCtrl: NavController,
@@ -44,6 +46,7 @@ import { LoadingController } from 'ionic-angular';
      public loadingCtrl: LoadingController
      ) {
    }
+
    abreCarregando() {
     this.loader = this.loadingCtrl.create({
       content: "Please wait...",
@@ -57,36 +60,48 @@ import { LoadingController } from 'ionic-angular';
   }
    
   doRefresh(refresher) {
-    console.log('Begin async operation', refresher);
-
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      refresher.complete();
-    }, 2000);
+    
+    this.refresher = refresher; // variável global recebe refresher   
+    this.isRefreshing = true; 
+    this.carregarFilmes();
   }
 
 
   ionViewDidEnter() { // função chamada quando a pagina é carregada (ionViewDidEnter só roda uma vez)
     //console.log('ionViewDidLoad FeedPage');
+     this.carregarFilmes();
+  }
+  
+  carregarFilmes(){
+    
     this.abreCarregando();
     this.movieProvider.getPopularMovies().subscribe(
       data =>{ 
          const response = (data as any);
          var objectRetorno = JSON.parse(response._body); // conver em objeto json
+         this.listaFilmes = objectRetorno; 
          console.log(objectRetorno);
-       //const response =  (data as any);
-      // const objetoRetorno = JSON.parse(response);
-      this.abreCarregando();
-         this.listaFilmes = objectRetorno;          
+         this.fechaCarregando();
+
+         if(this.isRefreshing){
+           this.refresher.complete();
+           this.isRefreshing = false;
+         }
+                 
        console.log(this.listaFilmes+"lista de filmes");
      },error=>{
        console.log(error);
-       this.abreCarregando();
+       this.fechaCarregando();
+
+       if(this.isRefreshing){
+        this.refresher.complete();
+        this.isRefreshing = false;
+      }
      }
 
      )
-  }
 
+  }
 
 
 }
