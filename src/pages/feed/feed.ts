@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MovieProvider } from '../../providers/movie/movie';
 import { LoadingController } from 'ionic-angular';
+import { FilmesDetalhesPage } from '../filmes-detalhes/filmes-detalhes';
 
 /**
  * Generated class for the FeedPage page.
@@ -23,15 +24,15 @@ import { LoadingController } from 'ionic-angular';
    ]
  })
  export class FeedPage {
-
-   public objectoFeed = {
-     titulo: "Elvis Huges",
-     data: "September 14, 1992",
-     descricao:"Estou criando um app incrivel",
-     qntdLikes: 12,
-     qntdComents:4,
-     timeComent:"11h ago"
-   }
+  
+  public objectoFeed = {
+    titulo: "Elvis Huges",
+    data: "September 14, 1992",
+    descricao:"Estou criando um app incrivel",
+    qntdLikes: 12,
+    qntdComents:4,
+    timeComent:"11h ago"
+  }
 
    public listaFilmes = new Array<any>();
    public loader;
@@ -65,6 +66,13 @@ import { LoadingController } from 'ionic-angular';
     this.isRefreshing = true; 
     this.carregarFilmes();
   }
+  
+  goToDetalhe(filme){
+    console.log(filme);
+     this.navCtrl.push(FilmesDetalhesPage,{id:filme.id});
+  }
+
+
 
 
   ionViewDidEnter() { // função chamada quando a pagina é carregada (ionViewDidEnter só roda uma vez)

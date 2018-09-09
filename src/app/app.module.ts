@@ -10,6 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { FeedPageModule } from '../pages/feed/feed.module';
 import { IntroPageModule } from '../pages/intro/intro.module';
 import { ConfiguracoesPageModule } from "../pages/configuracoes/configuracoes.module";
+import { FilmesDetalhesPageModule } from "../pages/filmes-detalhes/filmes-detalhes.module";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -38,6 +39,7 @@ import { PerfilPageModule } from '../pages/perfil/perfil.module';
     PerfilPageModule,
     ConfiguracoesPageModule,
     SobrePageModule,
+    FilmesDetalhesPageModule  
   ],
   bootstrap: [IonicApp],
   entryComponents: [
