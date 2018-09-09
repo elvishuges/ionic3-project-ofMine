@@ -69,7 +69,7 @@ import { FilmesDetalhesPage } from '../filmes-detalhes/filmes-detalhes';
   
   goToDetalhe(filme){
     console.log(filme);
-     this.navCtrl.push(FilmesDetalhesPage,{id:filme.id});
+    this.navCtrl.push(FilmesDetalhesPage,{ id:filme.id }); // passando o id fo filme
   }
 
 

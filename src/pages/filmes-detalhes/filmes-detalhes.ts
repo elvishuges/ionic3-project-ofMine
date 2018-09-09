@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { MovieProvider } from '../../providers/movie/movie';
 
 /**
  * Generated class for the FilmesDetalhesPage page.
@@ -12,15 +13,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @Component({
   selector: 'page-filmes-detalhes',
   templateUrl: 'filmes-detalhes.html',
+  providers:[
+    MovieProvider
+  ]
 })
 export class FilmesDetalhesPage {
   
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public filme;
+  public filmeId;
+
+  constructor(
+     public navCtrl: NavController,
+     public navParams: NavParams,
+     public movieProvider : MovieProvider
+    ) {
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad FilmesDetalhesPage');
+    this.filmeId = this.navParams.get("id");
+    this.movieProvider.getMoviesDetails(this.filmeId).subscribe(data=>{
+      let retorno = (data as any)._body;
+      this.filme = JSON.parse(retorno);
+    })
+    
+  }
+
+  getMovieDetails(){
+    
   }
 
 }
