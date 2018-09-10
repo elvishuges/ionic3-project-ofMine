@@ -21,6 +21,7 @@ export class MovieProvider {
   getLatesMovies(){
     return this.http.get(this.urlBase+"/movie/latest?api_key=554299a02bf72c71ebac8d2b6bd2db3d");
   }
+  
   //https://api.themoviedb.org/3//movie/popular?api_key=554299a02bf72c71ebac8d2b6bd2db3d
   getPopularMovies(){
     return this.http.get(this.urlBase+"/movie/popular?api_key=554299a02bf72c71ebac8d2b6bd2db3d");

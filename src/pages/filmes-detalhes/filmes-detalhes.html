@@ -14,18 +14,29 @@
 
 
 <ion-content padding>
-    <ion-card *ngIf="filme">
+  <ion-card *ngIf="filme" >
 
-        <ion-item>          
-          <p class="feed_date">{{filme.title}}</p>
-          <p class="feed_date">{{filme.release_date}}</p>
-        </ion-item>
+    <ion-item>          
+      <p class="feed_date">{{filme.title}}</p>
+      <p class="feed_date">{{filme.release_date}}</p>
+    </ion-item>
     
-        <img [src]=" 'https://image.tmdb.org/t/p/w500/' + filme.backdrop_path" >
+    <img [src]=" 'https://image.tmdb.org/t/p/w500/' + filme.backdrop_path" >
     
-        <ion-card-content>
-          <p>{{filme.spoken_languages.name}}</p>
-        </ion-card-content>
-      </ion-card>
+    <ion-card-content>
+      <p>{{filme.spoken_languages.name}}</p>
+    </ion-card-content>
+    <ion-item>
+     Nota: {{filme.vote_average}} 
+    </ion-item>
+    <ion-item>
+      Lingua Original: {{filme.original_language}}
+    </ion-item>
+    <ion-item>
+      Tempo: {{filme.runtime}} minutos
+    </ion-item>
+  
+  </ion-card>
+  
 
 </ion-content>
