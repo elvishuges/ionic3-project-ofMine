@@ -27,7 +27,7 @@ export class MovieProvider {
   }
 
   getMoviesDetails(filmeId){
-    return this.http.get(this.urlBase+`movie/${filmeId}?api_key=554299a02bf72c71ebac8d2b6bd2db3d`);
+    return this.http.get(this.urlBase+`/movie/${filmeId}?api_key=554299a02bf72c71ebac8d2b6bd2db3d`);
   }
   
 
