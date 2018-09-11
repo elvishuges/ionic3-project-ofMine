@@ -20,6 +20,7 @@ import { MovieProvider } from '../../providers/movie/movie';
 export class FilmesDetalhesPage {
   
   public filme;
+  public comentariosFilme  = new Array<any>();
   public filmeId;
 
   constructor(
@@ -35,12 +36,18 @@ export class FilmesDetalhesPage {
     this.movieProvider.getMoviesDetails(this.filmeId).subscribe(data=>{
       let retorno = (data as any)._body;
       this.filme = JSON.parse(retorno);
+    }),
+    
+    this.filmeId = this.navParams.get("id");
+    this.movieProvider.getMovieReviews(this.filmeId).subscribe(data=>{
+       let retorno2 = (data as any)._body;
+       console.log("Comentarios de Filme"+retorno2);
+       this.comentariosFilme = JSON.parse(retorno2);
+       
     })
     
   }
 
-  getMovieDetails(){
-    
-  }
+ 
 
 }

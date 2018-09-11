@@ -30,6 +30,10 @@ export class MovieProvider {
   getMoviesDetails(filmeId){
     return this.http.get(this.urlBase+`/movie/${filmeId}?api_key=554299a02bf72c71ebac8d2b6bd2db3d`);
   }
+  //https://api.themoviedb.org/3/movie/299536/reviews?api_key=554299a02bf72c71ebac8d2b6bd2db3d&language=en-US&page=1
+  getMovieReviews(filmeId){
+    return this.http.get(this.urlBase+`/movie/${filmeId}/reviews?api_key=554299a02bf72c71ebac8d2b6bd2db3d&language=en-US&page=1`);
+  }
   
 
   

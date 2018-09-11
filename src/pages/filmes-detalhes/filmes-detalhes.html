@@ -23,20 +23,36 @@
     
     <img [src]=" 'https://image.tmdb.org/t/p/w500/' + filme.backdrop_path" >
     
-    <ion-card-content>
-      <p>{{filme.spoken_languages.name}}</p>
-    </ion-card-content>
-    <ion-item>
-     Nota: {{filme.vote_average}} 
-    </ion-item>
-    <ion-item>
-      Lingua Original: {{filme.original_language}}
-    </ion-item>
-    <ion-item>
-      Tempo: {{filme.runtime}} minutos
-    </ion-item>
+    <ion-card>
+        <ion-item>
+            Nota : {{filme.vote_average}}
+        </ion-item>
+    </ion-card>
+    <ion-card >
+        <ion-item>
+            Lingua Original: {{filme.original_language}}
+        </ion-item>
+    </ion-card>
+    <ion-card >
+        <ion-item>
+            Tempo: {{filme.runtime}} minutos
+        </ion-item>
+    </ion-card>
+
+    <div *ngFor="let comentario of comentariosFilme.results" > 
+           
+        <ion-card>
+            <ion-card-header class="autorComentario">
+              {{comentario.author}}:
+            </ion-card-header>
+            <ion-card-content>
+              {{comentario.content}}
+            </ion-card-content>
+          </ion-card>
+    </div>
   
   </ion-card>
+
   
 
 </ion-content>
