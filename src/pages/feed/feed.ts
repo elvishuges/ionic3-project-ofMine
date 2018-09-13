@@ -38,6 +38,8 @@ import { FilmesDetalhesPage } from '../filmes-detalhes/filmes-detalhes';
    public loader;
    public refresher;
    public isRefreshing:boolean = false; // diz se 
+   public page = 1;
+   public infiniteScroll;
    
 
    constructor(
@@ -71,7 +73,13 @@ import { FilmesDetalhesPage } from '../filmes-detalhes/filmes-detalhes';
     console.log(filme);
     this.navCtrl.push(FilmesDetalhesPage,{ id:filme.id }); // passando o id fo filme
   }
-
+  
+  doInfinite(infiniteScroll) {
+    console.log('Begin async operation');
+    this.page++; // toda fez que chegar no final da pagina ele vai adiciinar +1 
+    this.infiniteScroll = infiniteScroll;
+    this.carregarFilmes(true);
+  }
 
 
 
@@ -80,15 +88,22 @@ import { FilmesDetalhesPage } from '../filmes-detalhes/filmes-detalhes';
      this.carregarFilmes();
   }
   
-  carregarFilmes(){
+  carregarFilmes(newPage : boolean = false){
     
     this.abreCarregando();
-    this.movieProvider.getPopularMovies().subscribe(
+    this.movieProvider.getPopularMovies(this.page).subscribe(
       data =>{ 
          const response = (data as any);
-         var objectRetorno = JSON.parse(response._body); // conver em objeto json
-         this.listaFilmes = objectRetorno; 
-         console.log(objectRetorno);
+         const objectRetorno = JSON.parse(response._body); // conver em objeto json          
+         
+         if(newPage){
+           this.listaFilmes = this.listaFilmes.concat(objectRetorno.results);
+           this.infiniteScroll.complete();
+         }else{
+           this.listaFilmes = objectRetorno.results;
+         }
+
+         console.log(objectRetorno.results);
          this.fechaCarregando();
 
          if(this.isRefreshing){

@@ -18,7 +18,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 	
-	<ion-card *ngFor="let filme of listaFilmes.results">
+	<ion-card *ngFor="let filme of listaFilmes">
 
 		<ion-item>
 			<ion-avatar item-start>
@@ -54,7 +54,8 @@
 			</ion-col>
 		</ion-row>
 		<button ion-button block (click)="goToDetalhe(filme)">Detalhe..</button>
-
-
 	</ion-card>
+	<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+		<ion-infinite-scroll-content></ion-infinite-scroll-content>
+	  </ion-infinite-scroll>
 </ion-content>

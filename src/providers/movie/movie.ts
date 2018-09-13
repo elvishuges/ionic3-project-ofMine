@@ -18,13 +18,13 @@ export class MovieProvider {
   }
   
   //https://api.themoviedb.org/3/movie/latest?api_key=554299a02bf72c71ebac8d2b6bd2db3d
-  getLatesMovies(){
+  getLatesMovies( ){
     return this.http.get(this.urlBase+"/movie/latest?api_key=554299a02bf72c71ebac8d2b6bd2db3d");
   }
   
   //https://api.themoviedb.org/3//movie/popular?api_key=554299a02bf72c71ebac8d2b6bd2db3d
-  getPopularMovies(){
-    return this.http.get(this.urlBase+"/movie/popular?api_key=554299a02bf72c71ebac8d2b6bd2db3d");
+  getPopularMovies( page = 1 ){
+    return this.http.get(this.urlBase+`/movie/popular?page=${page}&api_key=554299a02bf72c71ebac8d2b6bd2db3d`);
   }
 
   getMoviesDetails(filmeId){
